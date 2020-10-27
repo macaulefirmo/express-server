@@ -13,6 +13,10 @@ app.use (function (req, res, next) {
 
 app.use(express.static(`${__dirname}/dist`));
 
+app.get("*", function (req, res) {
+  res.redirect(`https://${req.headers.host}`);
+});
+
 app.listen(port, function() {
   console.log(`Servindo na porta ${port}`);
 });
